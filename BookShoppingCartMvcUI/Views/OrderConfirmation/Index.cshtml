@@ -1,0 +1,32 @@
+﻿@model List<CartDetail>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Checkout</h1>
+<table class="table table-responsive table-light table-bordered" style="width:100%">
+    <tr>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Image</th>
+        <th>Total</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.BookId</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.Quantity</td>
+            <td>@(item.UnitPrice * item.Quantity)</td>
+
+        </tr>
+    }
+
+</table>
+<br />
+<p>
+    <a asp-action="Checkout" asp-controller="Checkout" value="CheckOut">Checkout</a>
+</p>

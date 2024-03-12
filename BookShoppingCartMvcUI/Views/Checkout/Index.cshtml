@@ -1,0 +1,43 @@
+﻿@model ShoppingCart
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Checkout</h1>
+<table class="table table-responsive table-light table-bordered"style="width:100%">
+    <tr>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+    @* @foreach(var item in Model.CartDetails)
+    {
+        <tr>
+
+        <td>@item.BookId</td>
+        <td>@item.UnitPrice</td>
+        <td>@item.Quantity</td>
+            <td>
+                @if (string.IsNullOrEmpty(item.Book.Image))
+                {
+                    <img src="/images/NoImage.png" style="width:80px;height:100px" />
+                }
+                else
+                {
+                    <img src="/images/@item.Book.Image" style="width:80px;height:100px" />
+                }>
+            </td>
+        <td>@(item.UnitPrice * item.Quantity)</td>
+       
+    </tr>
+    } *@
+    <div class="my-2">
+        <h5>Total(Cad): </h5>
+        @(Model.CartDetails.Select(item => item.Book.Price * item.Quantity).Sum())
+    </div>
+</table>
+<br />
+<p>
+    <a asp-action="Checkout" asp-controller="Checkout" value="CheckOut">Checkout</a>
+</p>
